@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
   useParams,
-  useHistory,
 } from 'react-router-dom';
 
 import styles from './App.css';
@@ -24,17 +23,9 @@ function RGB() {
 }
 
 function RGBLoop() {
-  const history = useHistory();
-
-  setTimeout(() => {
-    history.push('/');
-  }, 5000);
-
   return (
     <div className={[styles.fill, styles.animate].join(' ')}>
-      <p>
-        Nothing to see here.<span>k Bye!!</span>
-      </p>
+      <p>Nothing to see here.</p>
     </div>
   );
 }
