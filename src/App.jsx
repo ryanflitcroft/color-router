@@ -2,6 +2,7 @@ import {
   Link,
   Redirect,
   BrowserRouter as Router,
+  Switch,
   Route,
   useParams,
 } from 'react-router-dom';
@@ -24,7 +25,15 @@ function RGB() {
 }
 
 function ScreenColor() {
-  return <div>{/* Create Route Inside Switch */}</div>;
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/rgb/:r/:g/:b">
+          <RGB />
+        </Route>
+      </Switch>
+    </div>
+  );
 }
 
 export default function App() {
