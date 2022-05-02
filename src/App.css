@@ -24,3 +24,29 @@ a {
   align-items: center;
   font-size: 3rem;
 }
+
+span {
+  display: block;
+  text-align: center;
+}
+
+.animate {
+  animation-name: backgroundLoop;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes backgroundLoop {
+    0% {
+      background: rgb(192, 192, 192)
+    }
+
+    33% {
+      background: rgb(220, 20, 60);
+    }
+
+    66% {
+      background: rgb(147, 112, 219);
+    }
+  }

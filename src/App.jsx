@@ -5,15 +5,14 @@ import {
   Switch,
   Route,
   useParams,
+  useHistory,
 } from 'react-router-dom';
 
 import styles from './App.css';
 
 function RGB() {
   const { r, g, b } = useParams();
-  console.log('params', r, g, b);
-  // 🚨 Get values for r, g, and b from params
-  // 🚨 Uncomment next lines after importing
+
   return (
     <div
       className={styles.fill}
@@ -24,12 +23,31 @@ function RGB() {
   );
 }
 
+function RGBLoop() {
+  const history = useHistory();
+
+  setTimeout(() => {
+    history.push('/');
+  }, 5000);
+
+  return (
+    <div className={[styles.fill, styles.animate].join(' ')}>
+      <p>
+        Nothing to see here.<span>k Bye!!</span>
+      </p>
+    </div>
+  );
+}
+
 function ScreenColor() {
   return (
     <div>
       <Switch>
         <Route exact path="/rgb/:r/:g/:b">
           <RGB />
+        </Route>
+        <Route path="/*">
+          <RGBLoop />
         </Route>
       </Switch>
     </div>
