@@ -2,26 +2,56 @@ import {
   Link,
   Redirect,
   BrowserRouter as Router,
+  Switch,
   Route,
+  useParams,
+  useHistory,
 } from 'react-router-dom';
 
 import styles from './App.css';
 
 function RGB() {
-  // 🚨 Get values for r, g, and b from params
-  // 🚨 Uncomment next lines after importing
-  // return (
-  // <div
-  //   className={styles.fill}
-  //   style={{ background: `rgb(${r}, ${g}, ${b})` }}
-  // >
-  //   <p>{`rgb(${r},${g},${b})`}</p>
-  // </div>
-  // );
+  const { r, g, b } = useParams();
+
+  return (
+    <div
+      className={styles.fill}
+      style={{ background: `rgb(${r}, ${g}, ${b})` }}
+    >
+      <p>{`rgb(${r},${g},${b})`}</p>
+    </div>
+  );
+}
+
+function RGBLoop() {
+  const history = useHistory();
+
+  setTimeout(() => {
+    history.push('/');
+  }, 5000);
+
+  return (
+    <div className={[styles.fill, styles.animate].join(' ')}>
+      <p>
+        Nothing to see here.<span>k Bye!!</span>
+      </p>
+    </div>
+  );
 }
 
 function ScreenColor() {
-  return <div>{/* Create Route Inside Switch */}</div>;
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/rgb/:r/:g/:b">
+          <RGB />
+        </Route>
+        <Route path="/*">
+          <RGBLoop />
+        </Route>
+      </Switch>
+    </div>
+  );
 }
 
 export default function App() {
