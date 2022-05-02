@@ -3,21 +3,24 @@ import {
   Redirect,
   BrowserRouter as Router,
   Route,
+  useParams,
 } from 'react-router-dom';
 
 import styles from './App.css';
 
 function RGB() {
+  const { r, g, b } = useParams();
+  console.log('params', r, g, b);
   // 🚨 Get values for r, g, and b from params
   // 🚨 Uncomment next lines after importing
-  // return (
-  // <div
-  //   className={styles.fill}
-  //   style={{ background: `rgb(${r}, ${g}, ${b})` }}
-  // >
-  //   <p>{`rgb(${r},${g},${b})`}</p>
-  // </div>
-  // );
+  return (
+    <div
+      className={styles.fill}
+      style={{ background: `rgb(${r}, ${g}, ${b})` }}
+    >
+      <p>{`rgb(${r},${g},${b})`}</p>
+    </div>
+  );
 }
 
 function ScreenColor() {
